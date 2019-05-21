@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 import org.apache.poi.ss.formula.functions.*;
 
+
 public class LoanCalcViewController implements Initializable   {
 
 	private StudentCalc SC = null;
@@ -56,15 +57,16 @@ public class LoanCalcViewController implements Initializable   {
 
 		System.out.println("Amount: " + LoanAmount.getText());
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
-		System.out.println("Amount: " + dLoanAmount);
+		double dInterestRate = Double.parseDouble(InterestRate.getText());
+		double dNbrOfYears = Double.parseDouble(NbrOfYears.getText());
+		double dAddPayment = Double.parseDouble(AdditionalPayment.getText());
 		
 		
-		/*
 		lblTotalPayemnts.setText("123");
 		
 		LocalDate localDate = PaymentStartDate.getValue();
 	 
 		System.out.println(localDate);
-		*/
+		
 	}
 }
