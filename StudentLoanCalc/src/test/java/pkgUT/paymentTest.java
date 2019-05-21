@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import app.controller.Payment;
 
-public class paymentTest {
+public class PaymentTest {
 	@Test
 	public void pay_test() {
 		double rate = 0.07/12;
