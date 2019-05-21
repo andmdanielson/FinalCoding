@@ -11,7 +11,6 @@ public class Loan {
 	private double dYears;
 	private double dMonths;
 	private double dAddPay;
-	private double dFutureVal;
 	private LocalDate startDate;
 	
 	private LinkedList<Payment> payments = new LinkedList<Payment>();
@@ -20,7 +19,6 @@ public class Loan {
 	private double totalInterest = 0;
 	
 	public Loan(double interest, double length, double loan, double extra, LocalDate start) {
-		dFutureVal=0;
 		dYInterest=interest;
 		dMInterest=dYInterest/12;
 		dYears=length;
@@ -37,7 +35,7 @@ public class Loan {
 		
 	//}
 	
-	public LocalDate nextDate(LocalDate current) {
+	public static LocalDate nextDate(LocalDate current) {
 		int month = current.getMonthValue();
 		int year = current.getYear();
 		
