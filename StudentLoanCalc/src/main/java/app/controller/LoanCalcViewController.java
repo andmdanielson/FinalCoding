@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
-import org.apache.poi.ss.formula.functions.*;
+
 
 
 public class LoanCalcViewController implements Initializable   {
@@ -23,6 +23,9 @@ public class LoanCalcViewController implements Initializable   {
 	
 	@FXML
 	private Label lblTotalPayemnts;
+	
+	@FXML
+	private Label lblTotalInterest;
 	
 	@FXML
 	private DatePicker PaymentStartDate;
@@ -66,8 +69,13 @@ public class LoanCalcViewController implements Initializable   {
 		Loan loanDetails=new Loan(dInterestRate, dNbrOfYears, dLoanAmount, dAddPayment, localDate);
 		
 		double payment_sum = loanDetails.getTotalPayment();
+		double rounded = Math.round(payment_sum*100.0)/100.0;
 		
-		lblTotalPayemnts.setText(""+payment_sum+"");
+		double interest_sum = loanDetails.getTotalInterest();
+		double rounded_interest = Math.round(interest_sum*100.0)/100.0;
+		
+		lblTotalPayemnts.setText(""+rounded+"");
+		lblTotalInterest.setText(""+rounded_interest+"");
 	 
 		System.out.println(localDate);
 		
