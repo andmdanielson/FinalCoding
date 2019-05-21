@@ -16,7 +16,7 @@ public class Payment {
 	public Payment(int n, double loan, double rate, double time, double additional, double balance, LocalDate payDate) {
 		num=n;
 		date=payDate;
-		double amount = Math.abs(FinanceLib.pmt(rate, time, loan, 0, true));
+		double amount = Math.abs(FinanceLib.pmt(rate, time, loan, 0, false));
 		dPayment = amount+additional;
 		dAdd=additional;
 		dInterest=rate*balance;
