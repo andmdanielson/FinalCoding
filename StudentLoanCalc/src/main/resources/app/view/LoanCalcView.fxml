@@ -55,6 +55,7 @@
                         <TextField fx:id="InterestRate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="NbrOfYears" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <DatePicker fx:id="PaymentStartDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="AdditionalPayment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <HBox prefHeight="152.0" prefWidth="88.0" />
