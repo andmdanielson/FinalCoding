@@ -3,13 +3,19 @@ package app.controller;
 import app.StudentCalc;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 
@@ -39,7 +45,29 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private TextField AdditionalPayment;
 	
+	@FXML
+	private TableView<Payment> LoanTable;
 	
+	@FXML
+	private TableColumn<Payment, Integer> PayNum;
+		
+	@FXML
+	private TableColumn<Payment, LocalDate> DueDate;
+	
+	@FXML
+	private TableColumn<Payment, Double> PayAmount;
+	
+	@FXML
+	private TableColumn<Payment, Double> AdditionalPay;
+	
+	@FXML
+	private TableColumn<Payment, Double> Interest;
+	
+	@FXML
+	private TableColumn<Payment, Double> Principle;
+	
+	@FXML
+	private TableColumn<Payment, Double> Balance;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -76,6 +104,24 @@ public class LoanCalcViewController implements Initializable   {
 		
 		lblTotalPayemnts.setText(""+rounded+"");
 		lblTotalInterest.setText(""+rounded_interest+"");
+		
+		LinkedList<Payment> paymentList = loanDetails.getPayments();
+		
+		ObservableList<Payment> finalData = FXCollections.observableArrayList();
+		
+		for (Payment p : paymentList) {
+			finalData.add(p);
+		}
+		
+		PayNum.setCellValueFactory(new PropertyValueFactory<Payment,Integer>("number"));
+		DueDate.setCellValueFactory(new PropertyValueFactory<Payment,LocalDate>("date"));
+		PayAmount.setCellValueFactory(new PropertyValueFactory<Payment,Double>("payment"));
+		AdditionalPay.setCellValueFactory(new PropertyValueFactory<Payment,Double>("additional"));
+		Interest.setCellValueFactory(new PropertyValueFactory<Payment,Double>("interest"));
+		Principle.setCellValueFactory(new PropertyValueFactory<Payment,Double>("principal"));
+		Balance.setCellValueFactory(new PropertyValueFactory<Payment,Double>("balance"));
+		
+		LoanTable.setItems(finalData);
 	 
 		System.out.println(localDate);
 		

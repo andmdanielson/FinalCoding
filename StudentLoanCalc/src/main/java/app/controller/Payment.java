@@ -28,7 +28,7 @@ public class Payment {
 		if (dPayment>=check) {
 			dPayment = check;
 			dPrincipal = balance;
-			dBalance = 0;
+			dBalance = 0.0;
 		}
 		
 	}
@@ -42,22 +42,22 @@ public class Payment {
 	}
 	
 	public double getPayment() {
-		return dPayment;
+		return Math.round(dPayment*100.0)/100.0;
 	}
 	
 	public double getAdditional() {
-		return dAdd;
+		return Math.round(dAdd*100.0)/100.0;
 	}
 	
 	public double getInterest() {
-		return dInterest;
+		return Math.round(dInterest*100.0)/100.0;
 	}
 	
 	public double getPrincipal() {
-		return dPrincipal;
+		return Math.round(dPrincipal*100.0)/100.0;
 	}
 	
 	public double getBalance() {
-		return dBalance;
+		return Math.round(dBalance*100.0)/100.0;
 	}
 }

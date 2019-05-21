@@ -71,7 +71,8 @@ public class Loan {
 		return totalInterest;
 	}
 	
-	
-	
+	public LinkedList<Payment> getPayments(){
+		return payments;
+	}
 
 }
