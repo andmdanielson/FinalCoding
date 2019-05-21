@@ -65,6 +65,9 @@ public class LoanCalcViewController implements Initializable   {
 		
 		Loan loanDetails=new Loan(dInterestRate, dNbrOfYears, dLoanAmount, dAddPayment, localDate);
 		
+		double payment_sum = loanDetails.getTotalPayment();
+		
+		lblTotalPayemnts.setText(""+payment_sum+"");
 	 
 		System.out.println(localDate);
 		

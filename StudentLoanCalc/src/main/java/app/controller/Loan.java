@@ -25,14 +25,13 @@ public class Loan {
 		dAddPay=extra;
 		startDate = start;
 		
-		//payments=createPayments();
+		payments=createPayments();
 		
 	}
 	
 	public LinkedList<Payment> createPayments(){
 		LinkedList<Payment> payList = new LinkedList<Payment>();
 		double remainingBalance = this.dPrincipal;
-		double mAmount = Math.abs(FinanceLib.pmt(dMInterest, dMonths, dPrincipal, 0, false));
 		int payNum = 1;
 		LocalDate payDate = startDate;
 		while (remainingBalance>0) {
@@ -41,6 +40,9 @@ public class Loan {
 			payNum++;
 			remainingBalance = pay.getBalance();
 			payList.add(pay);
+			
+			totalPayment = totalPayment + pay.getPayment();
+			totalInterest = totalInterest + pay.getInterest();
 		}
 		
 		return payList;
@@ -59,6 +61,14 @@ public class Loan {
 		
 		LocalDate next = current.withMonth(nextMonth).withYear(nextYear);
 		return next;
+	}
+	
+	public double getTotalPayment() {
+		return totalPayment;
+	}
+	
+	public double getTotalInterest() {
+		return totalInterest;
 	}
 	
 	
