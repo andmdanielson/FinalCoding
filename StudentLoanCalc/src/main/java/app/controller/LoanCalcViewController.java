@@ -61,10 +61,10 @@ public class LoanCalcViewController implements Initializable   {
 		double dNbrOfYears = Double.parseDouble(NbrOfYears.getText());
 		double dAddPayment = Double.parseDouble(AdditionalPayment.getText());
 		
-		
-		lblTotalPayemnts.setText("123");
-		
 		LocalDate localDate = PaymentStartDate.getValue();
+		
+		Loan loanDetails=new Loan(dInterestRate, dNbrOfYears, dLoanAmount, dAddPayment, localDate);
+		
 	 
 		System.out.println(localDate);
 		

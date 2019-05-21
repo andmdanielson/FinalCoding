@@ -20,8 +20,16 @@ public class Payment {
 		dPayment = amount+additional;
 		dAdd=additional;
 		dInterest=rate*balance;
+		
 		dPrincipal=amount-dInterest;
 		dBalance=balance-dPrincipal;
+		
+		double check = dInterest+balance;
+		if (dPayment>=check) {
+			dPayment = check;
+			dPrincipal = balance;
+			dBalance = 0;
+		}
 		
 	}
 	

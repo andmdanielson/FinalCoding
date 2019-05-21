@@ -3,12 +3,12 @@ package app.controller;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
+import org.apache.poi.ss.formula.functions.FinanceLib;
+
 public class Loan {
 	
-	private double dYInterest;
 	private double dMInterest;
 	private double dPrincipal;
-	private double dYears;
 	private double dMonths;
 	private double dAddPay;
 	private LocalDate startDate;
@@ -19,10 +19,8 @@ public class Loan {
 	private double totalInterest = 0;
 	
 	public Loan(double interest, double length, double loan, double extra, LocalDate start) {
-		dYInterest=interest;
-		dMInterest=dYInterest/12;
-		dYears=length;
-		dMonths=dYears*12;
+		dMInterest=interest/12;
+		dMonths=length*12;
 		dPrincipal=loan;
 		dAddPay=extra;
 		startDate = start;
@@ -31,9 +29,22 @@ public class Loan {
 		
 	}
 	
-	//public LinkedList<Payment> createPayments(){
+	public LinkedList<Payment> createPayments(){
+		LinkedList<Payment> payList = new LinkedList<Payment>();
+		double remainingBalance = this.dPrincipal;
+		double mAmount = Math.abs(FinanceLib.pmt(dMInterest, dMonths, dPrincipal, 0, false));
+		int payNum = 1;
+		LocalDate payDate = startDate;
+		while (remainingBalance>0) {
+			Payment pay = new Payment(payNum, dPrincipal, dMInterest, dMonths, dAddPay, remainingBalance, payDate);
+			payDate = nextDate(payDate);
+			payNum++;
+			remainingBalance = pay.getBalance();
+			payList.add(pay);
+		}
 		
-	//}
+		return payList;
+	}
 	
 	public static LocalDate nextDate(LocalDate current) {
 		int month = current.getMonthValue();
