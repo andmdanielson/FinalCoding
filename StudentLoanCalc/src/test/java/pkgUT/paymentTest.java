@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import app.controller.Payment;
 
-public class PaymentTest {
+public class paymentTest {
 	@Test
 	public void pay_test() {
 		double rate = 0.07/12;
@@ -18,10 +18,10 @@ public class PaymentTest {
 		LocalDate date = LocalDate.now();
 		
 		Payment pay = new Payment(1,amount,rate,time,add,amount,date);
-		
-		double PMT = pay.getPayment();
+				
+		double PMTactual = pay.getPayment();
 		double PMTexpected = 775.30;
-		assertEquals(PMTexpected,PMT,0.01);
+		assertEquals(PMTexpected,PMTactual,0.01);
 		
 	}
 	

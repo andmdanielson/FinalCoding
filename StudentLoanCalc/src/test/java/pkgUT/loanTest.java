@@ -8,6 +8,6 @@ import org.junit.Test;
 
 import app.controller.Loan;
 
-public class LoanTest {
+public class loanTest {
 
 }
