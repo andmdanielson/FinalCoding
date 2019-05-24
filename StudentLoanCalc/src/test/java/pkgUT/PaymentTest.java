@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import app.controller.Payment;
+import app.helper.Payment;
 
 public class PaymentTest {
 	@Test

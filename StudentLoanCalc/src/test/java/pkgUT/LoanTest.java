@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import app.controller.Loan;
+import app.helper.Loan;
 
 public class LoanTest {
 	@Test

@@ -16,6 +16,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import app.helper.Loan;
+import app.helper.Payment;
 
 
 
