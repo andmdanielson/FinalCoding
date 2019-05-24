@@ -33,6 +33,10 @@ public class Payment {
 			if (dAdd==0) {
 				dPayment =check;
 			}
+			else if (dPayment>check) {
+				dAdd=0;
+				dPayment=check;
+			}
 			else {
 				dAdd=check-dPayment;
 			}
@@ -51,32 +55,24 @@ public class Payment {
 	}
 	
 	public double getPayment() {
-		return Math.round(dPayment*100.0)/100.0;
+		return dPayment;
 	}
 	
 	
 	public double getAdditional() {
-		return Math.round(dAdd*100.0)/100.0;
+		return roundIt(dAdd);
 	}
 	
 	public double getInterest() {
 		return dInterest;
 	}
 	
-	public double unroundedInterest() {
-		return dInterest;
-	}
-	
 	public double getPrincipal() {
-		return Math.round(dPrincipal*100.0)/100.0;
+		return roundIt(dPrincipal);
 	}
 	
 	public double getBalance() {
-		return Math.round(dBalance*100.0)/100.0;
-	}
-	
-	public double unroundedBalance() {
-		return dBalance;
+		return roundIt(dBalance);
 	}
 	
 	public static double roundIt(double value) {
