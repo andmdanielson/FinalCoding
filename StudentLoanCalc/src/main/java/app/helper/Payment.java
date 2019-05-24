@@ -16,14 +16,15 @@ public class Payment {
 	public Payment(int n, double loan, double rate, int time, double additional, double balance, LocalDate payDate) {
 		num=n;
 		date=payDate;
-		double amount = roundIt(Math.abs(Finance.pmt(rate, time, loan, 0, 0)));
-		
+		//double amount = roundIt(Math.abs(Finance.pmt(rate, time, loan, 0, 0)));
+		double amount = Math.abs(Finance.pmt(rate, time, loan, 0, 0));
 		
 		
 		dPayment = amount;
 		dAdd=additional;
 		
-		dInterest = roundIt(rate*balance);
+		//dInterest = roundIt(rate*balance);
+		dInterest = rate*balance;
 				
 		dPrincipal=amount+additional-dInterest;
 		dBalance=balance-dPrincipal;
@@ -55,7 +56,7 @@ public class Payment {
 	}
 	
 	public double getPayment() {
-		return dPayment;
+		return roundIt(dPayment);
 	}
 	
 	
@@ -64,11 +65,19 @@ public class Payment {
 	}
 	
 	public double getInterest() {
+		return roundIt(dInterest);
+	}
+	
+	public double unroundedInterest() {
 		return dInterest;
 	}
 	
 	public double getPrincipal() {
 		return roundIt(dPrincipal);
+	}
+	
+	public double unroundedPrincipal() {
+		return dPrincipal;
 	}
 	
 	public double getBalance() {
