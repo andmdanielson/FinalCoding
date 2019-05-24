@@ -16,19 +16,14 @@ public class Payment {
 	public Payment(int n, double loan, double rate, int time, double additional, double balance, LocalDate payDate) {
 		num=n;
 		date=payDate;
-		double amount = Math.round(Math.abs(Finance.pmt(rate, time, loan, 0, 0))*100.0)/100.0;
+		double amount = roundIt(Math.abs(Finance.pmt(rate, time, loan, 0, 0)));
+		
+		
 		
 		dPayment = amount;
 		dAdd=additional;
 		
-		double InterestCalc = rate*balance*100.0;
-		if (InterestCalc%10>5) {
-			InterestCalc = Math.ceil(InterestCalc);
-		}
-		else {
-			InterestCalc = Math.floor(InterestCalc);
-		}
-		dInterest = InterestCalc/100.0;
+		dInterest = roundIt(rate*balance);
 				
 		dPrincipal=amount+additional-dInterest;
 		dBalance=balance-dPrincipal;
@@ -82,5 +77,16 @@ public class Payment {
 	
 	public double unroundedBalance() {
 		return dBalance;
+	}
+	
+	public static double roundIt(double value) {
+		double a = value*100.0;
+		if (a%1>0.5) {
+			a=Math.ceil(a);
+		}
+		else {
+			a=Math.floor(a);
+		}
+		return a/100.0;
 	}
 }

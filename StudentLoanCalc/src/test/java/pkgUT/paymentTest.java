@@ -9,7 +9,7 @@ import org.junit.Test;
 import app.controller.Payment;
 
 public class paymentTest {
-	@Test
+	//@Test
 	public void pay_test() {
 		double rate = 0.07/12;
 		int time = 20*12;
@@ -66,6 +66,27 @@ public class paymentTest {
 		double interest = pay.getInterest();
 		double interExpected = 583.33;
 		assertEquals(interExpected,interest,0.01);
+	}
+	
+	@Test
+	public void round_test_1() {
+		double test = Payment.roundIt(122.5150);
+		double expected = 122.51;
+		assertEquals(test,expected,0);
+	}
+	
+	@Test
+	public void round_test_2() {
+		double test = Payment.roundIt(122.5153);
+		double expected = 122.52;
+		assertEquals(expected,test,0);
+	}
+	
+	@Test
+	public void round_test_3() {
+		double test = Payment.roundIt(122.528);
+		double expected = 122.53;
+		assertEquals(expected,test,0);
 	}
 
 }
