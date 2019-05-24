@@ -12,6 +12,7 @@ public class Loan {
 	private double dMonths;
 	private double dAddPay;
 	private LocalDate startDate;
+	private static int paymentDay;
 	
 	private LinkedList<Payment> payments = new LinkedList<Payment>();
 	
@@ -24,6 +25,7 @@ public class Loan {
 		dPrincipal=loan;
 		dAddPay=extra;
 		startDate = start;
+		paymentDay = start.getDayOfMonth();
 		
 		payments=createPayments();
 		
@@ -51,6 +53,7 @@ public class Loan {
 	public static LocalDate nextDate(LocalDate current) {
 		int month = current.getMonthValue();
 		int year = current.getYear();
+		int day = paymentDay;
 		
 		int nextYear = year;
 		int nextMonth = month+1;
@@ -58,8 +61,28 @@ public class Loan {
 			nextMonth = 1;
 			nextYear = year+1;
 		}
+		if (day==31 || day==30 || day==29) {
+			if (nextMonth==4 || nextMonth==6 || nextMonth==9 || nextMonth==11) {
+				if (day==31) {
+					day=30;
+				}
+			}
+			else if (nextMonth==2) {
+				if (nextYear%4==0) {
+					day=29;
+				}
+				else {
+					day=28;
+				}
+				if (nextYear%100==0 && nextYear%400!=0){
+					day=28;
+				}
+				
+			}
+		}
 		
-		LocalDate next = current.withMonth(nextMonth).withYear(nextYear);
+		
+		LocalDate next = current.withMonth(nextMonth).withYear(nextYear).withDayOfMonth(day);
 		return next;
 	}
 	
