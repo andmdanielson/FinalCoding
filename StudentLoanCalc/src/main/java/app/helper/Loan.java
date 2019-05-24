@@ -11,7 +11,7 @@ public class Loan {
 	private int nMonths;
 	private double dAddPay;
 	private LocalDate startDate;
-	private static int paymentDay;
+	private int paymentDay;
 	
 	private LinkedList<Payment> payments = new LinkedList<Payment>();
 	
@@ -49,7 +49,7 @@ public class Loan {
 		return payList;
 	}
 	
-	public static LocalDate nextDate(LocalDate current) {
+	public LocalDate nextDate(LocalDate current) {
 		int month = current.getMonthValue();
 		int year = current.getYear();
 		int day = paymentDay;
