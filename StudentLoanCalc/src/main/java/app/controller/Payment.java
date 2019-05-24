@@ -21,7 +21,14 @@ public class Payment {
 		dPayment = amount;
 		dAdd=additional;
 		
-		dInterest=Math.round(rate*balance*100.0)/100.0;
+		double InterestCalc = rate*balance*100.0;
+		if (InterestCalc%10>5) {
+			InterestCalc = Math.ceil(InterestCalc);
+		}
+		else {
+			InterestCalc = Math.floor(InterestCalc);
+		}
+		dInterest = InterestCalc/100.0;
 				
 		dPrincipal=amount+additional-dInterest;
 		dBalance=balance-dPrincipal;
@@ -52,16 +59,13 @@ public class Payment {
 		return Math.round(dPayment*100.0)/100.0;
 	}
 	
-	public double unroundedPayment() {
-		return dPayment;
-	}
 	
 	public double getAdditional() {
 		return Math.round(dAdd*100.0)/100.0;
 	}
 	
 	public double getInterest() {
-		return Math.round(dInterest*100.0)/100.0;
+		return dInterest;
 	}
 	
 	public double unroundedInterest() {
