@@ -23,12 +23,17 @@ public class Payment {
 		
 		dInterest=Math.round(rate*balance*100.0)/100.0;
 				
-		dPrincipal=amount-dInterest;
+		dPrincipal=amount+additional-dInterest;
 		dBalance=balance-dPrincipal;
 		
 		double check = dInterest+balance;
-		if (dPayment>=check) {
-			dPayment = check;
+		if ((dPayment+dAdd)>=check) {
+			if (dAdd==0) {
+				dPayment =check;
+			}
+			else {
+				dAdd=check-dPayment;
+			}
 			dPrincipal = balance;
 			dBalance = 0.0;
 		}

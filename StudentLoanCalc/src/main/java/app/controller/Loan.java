@@ -43,7 +43,7 @@ public class Loan {
 			remainingBalance = pay.getBalance();
 			payList.add(pay);
 			
-			totalPayment = totalPayment + pay.getPayment();
+			totalPayment = totalPayment + pay.getPayment() + pay.getAdditional();
 			totalInterest = totalInterest + pay.getInterest();
 		}
 		
