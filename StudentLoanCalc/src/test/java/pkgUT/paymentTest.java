@@ -12,7 +12,7 @@ public class paymentTest {
 	@Test
 	public void pay_test() {
 		double rate = 0.07/12;
-		double time = 20*12;
+		int time = 20*12;
 		double amount = 100000;
 		double add = 0;
 		LocalDate date = LocalDate.now();
@@ -28,7 +28,7 @@ public class paymentTest {
 	@Test
 	public void balance_test() {
 		double rate = 0.07/12;
-		double time = 20*12;
+		int time = 20*12;
 		double amount = 100000;
 		double add = 0;
 		LocalDate date = LocalDate.now();
@@ -42,7 +42,7 @@ public class paymentTest {
 	@Test
 	public void principalTest() {
 		double rate = 0.07/12;
-		double time = 20*12;
+		int time = 20*12;
 		double amount = 100000;
 		double add = 0;
 		LocalDate date = LocalDate.now();
@@ -56,7 +56,7 @@ public class paymentTest {
 	@Test
 	public void interestTest() {
 		double rate = 0.07/12;
-		double time = 20*12;
+		int time = 20*12;
 		double amount = 100000;
 		double add = 0;
 		LocalDate date = LocalDate.now();

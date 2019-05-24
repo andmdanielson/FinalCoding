@@ -13,15 +13,15 @@ public class Payment {
 	private double dBalance;
 	private LocalDate date;
 	
-	public Payment(int n, double loan, double rate, double time, double additional, double balance, LocalDate payDate) {
+	public Payment(int n, double loan, double rate, int time, double additional, double balance, LocalDate payDate) {
 		num=n;
 		date=payDate;
-		double amount = Math.abs(FinanceLib.pmt(rate, time, loan, 0, false));
+		double amount = Math.abs(Finance.pmt(rate, time, loan, 0, 0));
 		dPayment = amount+additional;
 		dAdd=additional;
-		dInterest=rate*balance;
+		dInterest=Math.abs(Finance.ipmt(rate, n, time, balance, 0, 0));
 		
-		dPrincipal=amount-dInterest;
+		dPrincipal=Math.abs(Finance.ppmt(rate, n, time, balance, 0, 0));
 		dBalance=balance-dPrincipal;
 		
 		double check = dInterest+balance;
@@ -45,6 +45,10 @@ public class Payment {
 		return Math.round(dPayment*100.0)/100.0;
 	}
 	
+	public double unroundedPayment() {
+		return dPayment;
+	}
+	
 	public double getAdditional() {
 		return Math.round(dAdd*100.0)/100.0;
 	}
@@ -53,11 +57,19 @@ public class Payment {
 		return Math.round(dInterest*100.0)/100.0;
 	}
 	
+	public double unroundedInterest() {
+		return dInterest;
+	}
+	
 	public double getPrincipal() {
 		return Math.round(dPrincipal*100.0)/100.0;
 	}
 	
 	public double getBalance() {
 		return Math.round(dBalance*100.0)/100.0;
+	}
+	
+	public double unroundedBalance() {
+		return dBalance;
 	}
 }
