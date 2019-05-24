@@ -86,7 +86,7 @@
                         <TableColumn fx:id="PayAmount" prefWidth="85.0" text="Payment" />
                         <TableColumn fx:id="AdditionalPay" prefWidth="140.0" text="Additonal Payment" />
                         <TableColumn fx:id="Interest" prefWidth="148.0" text="Interest" />
-                        <TableColumn fx:id="Principle" prefWidth="129.0" text="Principle" />
+                        <TableColumn fx:id="Principle" prefWidth="129.0" text="Principal" />
                         <TableColumn fx:id="Balance" prefWidth="75.0" text="Balance" />
                     </columns>
                   </TableView>
