@@ -56,7 +56,7 @@ public class Payment {
 	}
 	
 	public double getPayment() {
-		return roundIt(dPayment);
+		return dPayment;
 	}
 	
 	
@@ -65,7 +65,7 @@ public class Payment {
 	}
 	
 	public double getInterest() {
-		return roundIt(dInterest);
+		return dInterest;
 	}
 	
 	public double unroundedInterest() {
@@ -73,7 +73,7 @@ public class Payment {
 	}
 	
 	public double getPrincipal() {
-		return roundIt(dPrincipal);
+		return dPrincipal;
 	}
 	
 	public double unroundedPrincipal() {
