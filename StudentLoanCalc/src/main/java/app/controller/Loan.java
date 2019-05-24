@@ -40,11 +40,11 @@ public class Loan {
 			Payment pay = new Payment(payNum, dPrincipal, dMInterest, nMonths, dAddPay, remainingBalance, payDate);
 			payDate = nextDate(payDate);
 			payNum++;
-			remainingBalance = pay.unroundedBalance();
+			remainingBalance = pay.getBalance();
 			payList.add(pay);
 			
-			totalPayment = totalPayment + pay.unroundedPayment();
-			totalInterest = totalInterest + pay.unroundedInterest();
+			totalPayment = totalPayment + pay.getPayment();
+			totalInterest = totalInterest + pay.getInterest();
 		}
 		
 		return payList;

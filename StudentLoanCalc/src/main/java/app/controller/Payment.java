@@ -16,12 +16,14 @@ public class Payment {
 	public Payment(int n, double loan, double rate, int time, double additional, double balance, LocalDate payDate) {
 		num=n;
 		date=payDate;
-		double amount = Math.abs(Finance.pmt(rate, time, loan, 0, 0));
-		dPayment = amount+additional;
-		dAdd=additional;
-		dInterest=Math.abs(Finance.ipmt(rate, n, time, balance, 0, 0));
+		double amount = Math.round(Math.abs(Finance.pmt(rate, time, loan, 0, 0))*100.0)/100.0;
 		
-		dPrincipal=Math.abs(Finance.ppmt(rate, n, time, balance, 0, 0));
+		dPayment = amount;
+		dAdd=additional;
+		
+		dInterest=Math.round(rate*balance*100.0)/100.0;
+				
+		dPrincipal=amount-dInterest;
 		dBalance=balance-dPrincipal;
 		
 		double check = dInterest+balance;
