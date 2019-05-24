@@ -55,6 +55,7 @@ public class Loan {
 		int year = current.getYear();
 		int day = paymentDay;
 		
+		
 		int nextYear = year;
 		int nextMonth = month+1;
 		if (nextMonth>12) {
