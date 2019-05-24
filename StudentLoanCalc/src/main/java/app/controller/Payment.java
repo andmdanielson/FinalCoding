@@ -77,7 +77,7 @@ public class Payment {
 	
 	public static double roundIt(double value) {
 		double a = value*100.0;
-		if (a%1>0.5) {
+		if (a%1>=0.5) {
 			a=Math.ceil(a);
 		}
 		else {
